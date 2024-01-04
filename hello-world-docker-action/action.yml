@@ -1,15 +1,19 @@
-name: "Hello World Docker Action"
-description: "Say hello to a user or the world."
+name: Hello, World!
+description: Greet someone and record the time
+author: GitHub Actions
+
 inputs:
   who-to-greet:
-    description: "Who to greet"
+    description: Who to greet
     required: true
-    default: "World"
+    default: World
+
 outputs:
   time:
-    description: "The time we said hello"
+    description: The time we greeted you
+
 runs:
-  using: "docker"
-  image: "Dockerfile"
-  args:
-    - ${{ inputs.who-to-greet }}
+  using: docker
+  image: Dockerfile
+  env:
+    INPUT_WHO_TO_GREET: ${{ inputs.who-to-greet }}
