@@ -1,7 +1,11 @@
-FROM alpine:3.10
+# Set the base image to use for subsequent instructions
+FROM alpine:3.19
 
-copy entrypoint.sh /entrypoint.sh
+# Set the working directory inside the container
+WORKDIR /usr/src
 
-RUN chmod +X entrypoint.sh
+# Copy any source file(s) required for the action
+COPY entrypoint.sh .
 
-ENTRYPOINT ["/entrypoint.sh"]
+# Configure the container to be run as an executable
+ENTRYPOINT ["/usr/src/entrypoint.sh"]
