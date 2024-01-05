@@ -38,12 +38,14 @@ jobs:
 
           tree
 Test:
+  runs-on: ubuntu-latest
   if: github.event_name == 'workflow_dispatch'
   needs: Build
   environment: Test
   steps:
     - run: echo "🧪 Testing..."
 Load-Test:
+  runs-on: ubuntu-latest
   if: github.event_name == 'workflow_dispatch'
   needs: Build
   environment: Load-Test
@@ -52,6 +54,7 @@ Load-Test:
         echo "🧪 Testing..."
         sleep 15
 Production:
+  runs-on: ubuntu-latest
   needs:
     - Test
     - Load-Test
